@@ -10,14 +10,19 @@
 import os
 import sys
 class filler:
-    def __init__(self, path, full_path, filename, text, lines=None):
+    def __init__(self, path, filename, text, lines=None):
         self.path = path
         self.filename = filename
         self.text = text
         self.lines = lines
-        if os.path.isdir(path) != True:
-            raise Exception('Unable to create DriveFiller Object. The path specified does not exist or is inaccessible.')
-        if text == '':
+        try:
+            if os.path.isdir(path) != True:
+                raise Exception('Unable to create DriveFiller Object. The path specified does not exist or is inaccessible.')
+        except:
+            raise Exception('Unable to create DriveFiller Object. Invalid path.')
+        try:
+            text = str(text)
+        except:
             raise Exception('Unable to create DriveFiller Object. Text cannot be empty or non-zero.')
         if filename == '':
             raise Exception('Unable to create DriveFiller Object. Filename cannot be empty or non-zero.')
@@ -32,8 +37,7 @@ class filler:
     def fill(self):
         file = open(self.path + self.filename +'.txt', '+a')
         if self.lines != None:
-            print('Writing to file')
-            print('To abort, use ^C or [CTRL]^C...')
+            print('Writing ',str((len(self.text)+1)*self.lines),' bytes to file...')
             for i in range(0, self.lines):
                 file.write(self.text+'\n')
             print('Write Completed!')
