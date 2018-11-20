@@ -10,17 +10,24 @@
 import os
 import sys
 class filler:
-    def __init__(self, path, full_path, filename, text, lines=None):
+    def __init__(self, path, filename, text, lines=None):
         self.path = path
         self.filename = filename
         self.text = text
         self.lines = lines
-        if os.path.isdir(path) != True:
-            raise Exception('Unable to create DriveFiller Object. The path specified does not exist or is inaccessible.')
-        if text == '':
-            raise Exception('Unable to create DriveFiller Object. Text cannot be empty or non-zero.')
+        try:
+            if os.path.isdir(path) != True:
+                raise ValueError('Unable to create DriveFiller Object. The path specified does not exist or is inaccessible.')
+            else:
+                pass
+        except:
+            raise ValueError('Unable to create DriveFiller Object. Invalid path specified.')
+        try:
+            self.text = str(text)
+        except:
+            raise ValueError('Unable to create DriveFiller Object. Text cannot be empty or non-zero.')
         if filename == '':
-            raise Exception('Unable to create DriveFiller Object. Filename cannot be empty or non-zero.')
+            raise ValueError('Unable to create DriveFiller Object. Filename cannot be empty or non-zero.')
         try:
             if lines != None:
                 lines = int(lines)
@@ -50,4 +57,3 @@ class filler:
 
     def checkSize(self):
         return os.stat(self.path + self.filename + '.txt').st_size
-      
