@@ -32,7 +32,7 @@ class filler:
     def fill(self):
         file = open(self.path + self.filename +'.txt', '+a')
         if self.lines != None:
-            print('Writing ',str((len(self.text)+1)*self.lines),' bytes to file...')
+            print('Writing to file')
             print('To abort, use ^C or [CTRL]^C...')
             for i in range(0, self.lines):
                 file.write(self.text+'\n')
