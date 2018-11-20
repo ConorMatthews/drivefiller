@@ -1,9 +1,14 @@
 # DriveFiller(dot)py
 A python library that creates very large files very quickly.
+Please DO NOT use in any malicious form. This has been made for the sole purpose of testing on systems you have the
+permission to break. We (Conor and Ben) accept no responsibility for any consequences you may recieve or damage you
+may cause.
 
 ## Examples
+To write 500 lines in the file 'text.txt' stored in 'C:\Documents\' with the text 'Hello World!' and check size in bytes:
 ```
-fill(path, file_name, text) #path is the path to the location in example format '/home/user/name/', file_name is the name for the file (no extension and text is the text to endlessly write to the file with.
-
-size(path) #returns file size in bytes of a file with its entire path entered including the file name and extension
+import drivefiller as df
+Filler_Object = df.filler('C:\Documents\', 'text', 'Hello World!', 500)
+Filler_Object.fill()
+print(Filler_Object.checkSize())
 ```
