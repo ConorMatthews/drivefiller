@@ -1,11 +1,11 @@
 #Usage:
-#To write 500 to a file text.txt stored in C:\Documents\ with text 'Hello, World!':
+#To write 500 lines in the file 'text.txt' stored in 'C:\Documents\' with the text 'Hello World!' and check size in bytes:
 #>>> import DriveFiller as df
 #>>> Filler_Oblect = df.(path, filename, text, line_amount) # Do not use in code - solely to show the variables that are needed
 #>>> Filler_Object = df.filler('C:\Documents\', 'text', 'Hello World!', 500)
 #>>> Filler_Object.fill()
 #>>> print(Filler_Object.sizeCheck()) # Outputs in bytes
-#N.B Line amout is optional. If no line amount is specified, the program will fill infinitely untill KeyboardInterrupted.
+#N.B Line amount is optional. If no line amount is specified, the program will fill infinitely untill KeyboardInterrupted.
 
 import os
 import sys
