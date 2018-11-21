@@ -17,43 +17,37 @@ class filler:
         self.lines = lines
         try:
             if os.path.isdir(path) != True:
-                raise ValueError('Unable to create DriveFiller Object. The path specified does not exist or is inaccessible.')
+                raise ValueError()
             else:
                 pass
         except:
-            raise ValueError('Unable to create DriveFiller Object. Invalid path specified.')
+            raise ValueError()
         try:
             self.text = str(text)
         except:
-            raise ValueError('Unable to create DriveFiller Object. Text cannot be empty or non-zero.')
+            raise ValueError()
         if filename == '':
-            raise ValueError('Unable to create DriveFiller Object. Filename cannot be empty or non-zero.')
+            raise ValueError()
         try:
             if lines != None:
                 lines = int(lines)
             else:
                 pass
         except:
-            raise TypeError('Unable to create DriveFiller Object. Lines must be an non-zero integer.')
+            raise TypeError()
     
     def fill(self):
         file = open(self.path + self.filename +'.txt', '+a')
         if self.lines != None:
-            print('Writing to file')
-            print('To abort, use ^C or [CTRL]^C...')
             for i in range(0, self.lines):
                 file.write(self.text+'\n')
-            print('Write Completed!')
         else:
-            print('Starting Infinite Write.')
-            print('To abort, use ^C or [CTRL]^C...')
             file = open(self.path + self.filename +'.txt', '+a')
             i = 0
-            bpl = len(self.text)+1
+            bpl = len(str(self.text))+1
             while True:
                 file.write(self.text+'\n')
                 i = i+1
-                print(i, ' lines written. Total Bytes: ',bpl*i, end='\r')
 
     def checkSize(self):
         return os.stat(self.path + self.filename + '.txt').st_size
